@@ -13,7 +13,7 @@ summary: ''
 authors: []
 lastmod: '2020-12-26T17:54:44Z'
 featured: yes
-image: "plot.png"
+image: "~/Desktop/hugo/content/post/2020-12-26-contituency-focus-in-parliamentary-speech-automated-content-analysis-in-r"
   caption: ''
   focal_point: ''
   preview_only: no
