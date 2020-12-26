@@ -38,7 +38,7 @@ There are a number of reasons we might expect newly elected MPs to be more const
 
 #### Required Packages
 
-```{r, results = FALSE, warning=FALSE}
+```{r, message=FALSE}
 
 require(data.table)
 require(tidyverse)
@@ -219,7 +219,7 @@ speeches$con_elect <- paste0(speeches$constituency, speeches$parl)
 
 One issue with aggregating our data to reflect activity across the parliamentary tenure is the possibility of by-elections (elections when MPs resign or are removed from their post). This can be achieved by aggregating our data by the unique id we have generated and identifying cases with more than one MP display name within a single Parliament
 
-```{r, warnings=FALSE}
+```{r, warnings=FALSE, results=FALSE}
 
 ## group_by andd summarise from dplyr package
 
@@ -238,7 +238,7 @@ speeches <- filter(speeches, count == 1)
 
 And aggregate again using the same method
 
-```{r, warning=FALSE}
+```{r, warning=FALSE, results= FALSE}
 
 df <- speeches %>% group_by(con_elect) %>%
   summarise(count = sum(x),
