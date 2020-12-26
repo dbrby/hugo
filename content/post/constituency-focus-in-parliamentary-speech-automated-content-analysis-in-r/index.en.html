@@ -1,26 +1,4 @@
----
-title: 'Contituency-Focus in Parliamentary Speech: Automated Content Analysis in R'
-author: admin
-date: '2020-12-26'
-slug: contituency-focus-in-parliamentary-speech-automated-content-analysis-in-r
-categories: []
-tags:
-  - content analysis
-  - r
-  - legislative behaviour
-subtitle: ''
-summary: ''
-authors: []
-lastmod: '2020-12-26T17:54:44Z'
-featured: yes
-image: 
-  caption: ''
-  focal_point: ''
-  preview_only: yes
-projects: []
----
-
-<script src="/rmarkdown-libs/header-attrs/header-attrs.js"></script>
+<script src="index.en_files/header-attrs/header-attrs.js"></script>
 
 
 <p>I haven’t posted a blog in a little while, so I thought I’d do a little something related to my recent projects which have looked at constituency-focus in legislative speech.</p>
@@ -107,12 +85,12 @@ speeches$constituency &lt;- speeches$constituency %&gt;% tolower() %&gt;%
 <p>Calculate percentage of constituency references in spoken contributions, and present as histogram.</p>
 <pre class="r"><code>df$con_perc &lt;- round((df$con_ref / df$count*100), digits = 2)
 hist(df$con_perc, main = &quot;Histogram of % of contributions in HoC featuring Constituency Reference&quot;, xlab = &quot;%&quot; , col = &quot;darkmagenta&quot;)</code></pre>
-<p><img src="/post/index.en_files/figure-html/unnamed-chunk-14-1.png" width="672" /></p>
+<p><img src="index.en_files/figure-html/unnamed-chunk-14-1.png" width="672" /></p>
 <p>Here we see that the majority of MPs (excluding more senior Government and Opposition figures) reference their constituency between 5-20% across their parliamentary contributions. Let us now plot the percentage of constituency references by the overall count of contributions and use ggplot to colour code newly elected and returning MPs.</p>
 <pre class="r"><code>p &lt;- ggplot(df, aes(count, con_perc, colour = new_elect)) + geom_point()
 p + labs(x =&quot;Number of Contributions&quot;,  y=&quot;Percentage feat. Constituency Reference&quot;, 
   colour = &quot;New MP / Returning MP&quot;)</code></pre>
-<p><img src="/post/index.en_files/figure-html/unnamed-chunk-15-1.png" width="672" /></p>
+<p><img src="index.en_files/figure-html/unnamed-chunk-15-1.png" width="672" /></p>
 <p>Gleaning from the plot, 3 trends are observed:1) as MPs contribute more within a Parliament, the proportion of their contributions referencing constituents declines; 2) on average newly elected MPs seemingly contribute more compared to returning MPs and 3) do indeed reference their constituents more.</p>
 <p>We conduct a simple unpaired t-test in R to compare group-differences between new and returning MPs.</p>
 <pre class="r"><code>df$new_elect[df$new_elect == &quot;New&quot;] &lt;- 1

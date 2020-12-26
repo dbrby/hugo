@@ -1,8 +1,8 @@
 ---
-title: 'Contituency-Focus in Parliamentary Speech: Automated Content Analysis in R'
+title: 'Constituency-Focus in Parliamentary Speech: Automated Content Analysis in R'
 author: admin
 date: '2020-12-26'
-slug: contituency-focus-in-parliamentary-speech-automated-content-analysis-in-r
+slug: constituency-focus-in-parliamentary-speech-automated-content-analysis-in-r
 categories: []
 tags:
   - content analysis
