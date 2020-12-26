@@ -15,5 +15,6 @@ header:
 ---
 
 
-**Qualitative Analysis**, Humanities and Social Sciences Graduate School, University of Strathclyde, 2021.
+**Qualitative Methods**, Guest Lecturer, Humanities and Social Sciences Graduate School, University of Strathclyde, 2021.
 
+**Principles of Research Design**, Graduate Teaching Assistant, School of Government and Public Policy, University of Strathclyde, 2021.
