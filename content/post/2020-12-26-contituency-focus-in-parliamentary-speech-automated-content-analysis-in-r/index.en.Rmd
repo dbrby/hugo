@@ -38,7 +38,7 @@ There are a number of reasons we might expect newly elected MPs to be more const
 
 #### Required Packages
 
-```{r include=FALSE}
+```{r message = FALSE}
 
 require(data.table)
 require(tidyverse)
