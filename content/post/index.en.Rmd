@@ -16,7 +16,7 @@ featured: yes
 image: 
   caption: ''
   focal_point: ''
-  preview_only: no
+  preview_only: yes
 projects: []
 ---
 
@@ -38,7 +38,7 @@ There are a number of reasons we might expect newly elected MPs to be more const
 
 #### Required Packages
 
-```{r message = FALSE}
+```{r, message=FALSE}
 
 require(data.table)
 require(tidyverse)
@@ -261,7 +261,7 @@ As a quick solution for generating some blog-worthy content, we remove cases wit
 
 ```{r}
 
-df <- subset(df, count >= 50 & count <= 2000)
+df <- filter(df, count >= 50 & count <= 2000)
 
 ```
 
