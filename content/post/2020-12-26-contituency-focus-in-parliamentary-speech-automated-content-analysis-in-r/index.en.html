@@ -12,11 +12,11 @@ subtitle: ''
 summary: ''
 authors: []
 lastmod: '2020-12-26T17:54:44Z'
-featured: no
-image:
+featured: yes
+image: 
   caption: ''
   focal_point: ''
-  preview_only: no
+  preview_only: yes
 projects: []
 ---
 
@@ -86,10 +86,8 @@ speeches &lt;- merge(speeches, mps, by =  &quot;mnis_id&quot;)</code></pre>
 
 
 speeches$start_date &lt;- as.Date(speeches$start_date)
-speeches$new_elect &lt;- c()</code></pre>
-<pre><code>## Warning in set(x, j = name, value = value): Column &#39;new_elect&#39; does not exist to
-## remove</code></pre>
-<pre class="r"><code>speeches$new_elect[difftime(election_2005, speeches$start_date, units = &quot;days&quot;) == 0] &lt;- &quot;New&quot;
+speeches$new_elect &lt;- c()
+speeches$new_elect[difftime(election_2005, speeches$start_date, units = &quot;days&quot;) == 0] &lt;- &quot;New&quot;
 speeches$new_elect[difftime(election_2010, speeches$start_date, units = &quot;days&quot;) == 0] &lt;- &quot;New&quot;
 speeches$new_elect[is.na(speeches$new_elect)] &lt;- &quot;Returning&quot;</code></pre>
 </div>
@@ -125,16 +123,11 @@ speeches$con_ref3 &lt;- as.integer(str_detect(speeches$speech, speeches$alt_con)
 
 #Construct into single meaesure
 
-speeches$con_ref &lt;- c()</code></pre>
-<pre><code>## Warning in set(x, j = name, value = value): Column &#39;con_ref&#39; does not exist to
-## remove</code></pre>
-<pre class="r"><code>speeches$con_ref[speeches$con_ref1 + speeches$con_ref2 + speeches$con_ref3 &gt;= 1] &lt;- 1
+speeches$con_ref &lt;- c()
+speeches$con_ref[speeches$con_ref1 + speeches$con_ref2 + speeches$con_ref3 &gt;= 1] &lt;- 1
 speeches$con_ref[speeches$con_ref1 + speeches$con_ref2 + speeches$con_ref3 == 0] &lt;- 0
 
 table(speeches$con_ref) ##39k/290k positive</code></pre>
-<pre><code>## 
-##      0      1 
-## 251210  39041</code></pre>
 </div>
 <div id="aggregate-data" class="section level2">
 <h2>Aggregate Data</h2>
@@ -153,10 +146,8 @@ parliament_2010_2015 &lt;- interval(election_2010, election_2015)
 
 ## First create variable to record which parliament the session date falls into
 
-speeches$parl &lt;- c()</code></pre>
-<pre><code>## Warning in set(x, j = name, value = value): Column &#39;parl&#39; does not exist to
-## remove</code></pre>
-<pre class="r"><code>speeches$parl[speeches$date %within% parliament_2005_2010 == TRUE] &lt;- 2005
+speeches$parl &lt;- c()
+speeches$parl[speeches$date %within% parliament_2005_2010 == TRUE] &lt;- 2005
 speeches$parl[speeches$date %within% parliament_2010_2015 == TRUE] &lt;- 2010
 
 
@@ -165,11 +156,11 @@ speeches$parl[speeches$date %within% parliament_2010_2015 == TRUE] &lt;- 2010
 
 speeches$con_elect &lt;- paste0(speeches$constituency, speeches$parl)</code></pre>
 <p>One issue with aggregating our data to reflect activity across the parliamentary tenure is the possibility of by-elections (elections when MPs resign or are removed from their post). This can be achieved by aggregating our data by the unique id we have generated and identifying cases with more than one MP display name within a single Parliament</p>
-<pre class="r"><code>## group_by andd summarise from dplyr package
+<pre class="r"><code>## group_by and summarise from dplyr package
 
-speeches_agg &lt;- speeches %&gt;% group_by(con_elect) %&gt;% summarise(count = length(unique(display_as)))</code></pre>
-<pre><code>## `summarise()` ungrouping output (override with `.groups` argument)</code></pre>
-<pre class="r"><code>#26 cases of &gt;1 MP
+speeches_agg &lt;- speeches %&gt;% group_by(con_elect) %&gt;% summarise(count = length(unique(display_as)))
+
+#26 cases of &gt;1 MP
 
 
 #Merge in count of MPs
@@ -182,9 +173,9 @@ speeches &lt;- filter(speeches, count == 1)</code></pre>
   summarise(count = sum(x),
             con_ref = sum(con_ref),
             new_elect = new_elect
-            )</code></pre>
-<pre><code>## `summarise()` regrouping output by &#39;con_elect&#39; (override with `.groups` argument)</code></pre>
-<pre class="r"><code>##Remove any potential duplicates
+            )
+
+##Remove any potential duplicates
 
 df &lt;- unique (df)</code></pre>
 </div>

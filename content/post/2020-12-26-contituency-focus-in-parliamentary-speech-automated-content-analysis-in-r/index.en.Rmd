@@ -13,10 +13,10 @@ summary: ''
 authors: []
 lastmod: '2020-12-26T17:54:44Z'
 featured: yes
-image: "~/Desktop/hugo/content/post/2020-12-26-contituency-focus-in-parliamentary-speech-automated-content-analysis-in-r"
+image: 
   caption: ''
   focal_point: ''
-  preview_only: no
+  preview_only: yes
 projects: []
 ---
 
@@ -122,7 +122,7 @@ speeches <- merge(speeches, mps, by =  "mnis_id")
 
 Identifying newly elected MPs is relatively simple, we first load in the dates of the 2005 and 2010 UK General Elections and code whether or not there is zero difference in days between the election and the start\_date of the MP.
 
-```{r, warning=FALSE}
+```{r, warning=FALSE, results= FALSE, message = FALSE}
 
 election_2010 <- as.Date("2010-05-05")
 
@@ -153,7 +153,7 @@ speeches$constituency <- speeches$constituency %>% tolower() %>%
 
 Now we create a dictionary of the constituency terms to search for and use the str\_detect function in the 'stringr' package to identify whether the transcript of the contribution contains either term
 
-```{r}
+```{r, warning=FALSE, results= FALSE, message = FALSE}
 con_dict <- "my constituen|own constituen"
 
 #as.integer returns 0/1 in place of FALSE/TRUE
@@ -189,7 +189,7 @@ table(speeches$con_ref) ##39k/290k positive
 
 Now that we have run our automated content analysis, we are interested in aggregating our data for each MP /Parliament (2005 & 2010).
 
-```{r}
+```{r, warning=FALSE, results= FALSE, message = FALSE}
 
 #To record a count of 1 for each contribution corresponding to an MP we create a variable x, which equals 1
 
@@ -219,9 +219,9 @@ speeches$con_elect <- paste0(speeches$constituency, speeches$parl)
 
 One issue with aggregating our data to reflect activity across the parliamentary tenure is the possibility of by-elections (elections when MPs resign or are removed from their post). This can be achieved by aggregating our data by the unique id we have generated and identifying cases with more than one MP display name within a single Parliament
 
-```{r, warnings=FALSE, results=FALSE}
+```{r, warning=FALSE, results= FALSE, message = FALSE}
 
-## group_by andd summarise from dplyr package
+## group_by and summarise from dplyr package
 
 speeches_agg <- speeches %>% group_by(con_elect) %>% summarise(count = length(unique(display_as)))
 
@@ -238,7 +238,7 @@ speeches <- filter(speeches, count == 1)
 
 And aggregate again using the same method
 
-```{r, warning=FALSE, results= FALSE}
+```{r, warning=FALSE, results= FALSE, message = FALSE}
 
 df <- speeches %>% group_by(con_elect) %>%
   summarise(count = sum(x),
