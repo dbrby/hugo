@@ -10,7 +10,7 @@ authors:
 superuser: true
 
 # Role/position
-role: Doctoral Research of Political Science
+role: Doctoral Researcher of Political Science
 
 # Organizations/Affiliations
 organizations:
