@@ -1,19 +1,19 @@
 ---
-title: 'Constituency-Focus in Parliamentary Speech: Automated Content Analysis in R'
-author: admin
-date: '2020-12-26'
+title: Constituency Focus In Parliamentary Speech Automated Content Analysis in R
+author: 'Daniel Braby'
+date: '2020-12-27'
 slug: constituency-focus-in-parliamentary-speech-automated-content-analysis-in-r
 categories: []
 tags:
   - content analysis
-  - r
   - legislative behaviour
+  - r
 subtitle: ''
 summary: ''
 authors: []
-lastmod: '2020-12-26T17:54:44Z'
+lastmod: '2020-12-27T00:02:49Z'
 featured: yes
-image: 
+image:
   caption: ''
   focal_point: ''
   preview_only: yes
@@ -313,3 +313,7 @@ The preliminary findings here provide some valuable insights which require furth
 One finding this study does provide, is that differences in MPs' constituency-focus are not reducible to differences in personal style. If limitations of suitable data were not an issue the next step would be evaluating whether constituency-references declined for newly elected MPs following their re-election.
 
 More to follow : )
+
+
+
+
