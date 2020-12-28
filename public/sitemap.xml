@@ -3,59 +3,88 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>https://danielbraby.com/cvs/conferences/</loc>
-    <lastmod>2020-08-09T00:00:00+00:00</lastmod>
+    <loc>https://danielbraby.com/post/constituency-focus-in-parliamentary-speech-automated-content-analysis-in-r/</loc>
+    <lastmod>2020-12-27T00:14:05+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://danielbraby.com/cvs/</loc>
-    <lastmod>2020-08-09T00:00:00+00:00</lastmod>
+    <loc>https://danielbraby.com/tag/content-analysis/</loc>
+    <lastmod>2020-12-27T00:14:05+00:00</lastmod>
   </url>
   
   <url>
     <loc>https://danielbraby.com/</loc>
-    <lastmod>2020-08-09T00:00:00+00:00</lastmod>
+    <lastmod>2020-12-27T00:14:05+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://danielbraby.com/tag/legislative-behaviour/</loc>
+    <lastmod>2020-12-27T00:14:05+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://danielbraby.com/tag/r/</loc>
+    <lastmod>2020-12-27T00:14:05+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://danielbraby.com/tags/</loc>
+    <lastmod>2020-12-27T00:14:05+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://danielbraby.com/cvs/conferences/</loc>
+    <lastmod>2020-12-26T17:24:03+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://danielbraby.com/cvs/</loc>
+    <lastmod>2020-12-26T23:35:11+00:00</lastmod>
   </url>
   
   <url>
     <loc>https://danielbraby.com/cvs/grants-and-awards/</loc>
-    <lastmod>2020-08-09T00:00:00+00:00</lastmod>
+    <lastmod>2020-12-26T17:24:03+00:00</lastmod>
   </url>
   
   <url>
     <loc>https://danielbraby.com/cvs/publications/</loc>
-    <lastmod>2020-08-09T00:00:00+00:00</lastmod>
+    <lastmod>2020-12-26T17:24:03+00:00</lastmod>
   </url>
   
   <url>
     <loc>https://danielbraby.com/cvs/qualifications/</loc>
-    <lastmod>2020-08-09T00:00:00+00:00</lastmod>
+    <lastmod>2020-12-26T17:24:03+00:00</lastmod>
   </url>
   
   <url>
     <loc>https://danielbraby.com/cvs/teaching/</loc>
-    <lastmod>2020-08-09T00:00:00+00:00</lastmod>
+    <lastmod>2020-12-26T23:35:11+00:00</lastmod>
   </url>
   
   <url>
     <loc>https://danielbraby.com/bio/</loc>
-    <lastmod>2019-01-01T00:00:00+00:00</lastmod>
+    <lastmod>2020-12-26T17:24:03+00:00</lastmod>
   </url>
   
   <url>
     <loc>https://danielbraby.com/current/</loc>
+    <lastmod>2020-12-26T17:24:03+00:00</lastmod>
   </url>
   
   <url>
     <loc>https://danielbraby.com/cv/</loc>
+    <lastmod>2020-12-26T17:24:03+00:00</lastmod>
   </url>
   
   <url>
     <loc>https://danielbraby.com/software/</loc>
+    <lastmod>2020-12-26T17:24:03+00:00</lastmod>
   </url>
   
   <url>
     <loc>https://danielbraby.com/authors/</loc>
+    <lastmod>2020-12-26T17:29:49+00:00</lastmod>
   </url>
   
   <url>
@@ -64,18 +93,16 @@
   
   <url>
     <loc>https://danielbraby.com/author/daniel-braby/</loc>
+    <lastmod>2020-12-26T17:29:49+00:00</lastmod>
   </url>
   
   <url>
     <loc>https://danielbraby.com/post/</loc>
+    <lastmod>2020-12-26T17:24:03+00:00</lastmod>
   </url>
   
   <url>
     <loc>https://danielbraby.com/publication_types/</loc>
-  </url>
-  
-  <url>
-    <loc>https://danielbraby.com/tags/</loc>
   </url>
   
 </urlset>

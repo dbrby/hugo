@@ -82,6 +82,14 @@ mps &lt;- tibble(
 
 speeches &lt;- merge(speeches, mps, by =  &quot;mnis_id&quot;)</code></pre>
 <p>Identifying newly elected MPs is relatively simple, we first load in the dates of the 2005 and 2010 UK General Elections and code whether or not there is zero difference in days between the election and the start_date of the MP.</p>
+<pre class="r"><code>election_2010 &lt;- as.Date(&quot;2010-05-05&quot;)
+
+
+speeches$start_date &lt;- as.Date(speeches$start_date)
+speeches$new_elect &lt;- c()</code></pre>
+<pre class="r"><code>speeches$new_elect[difftime(election_2005, speeches$start_date, units = &quot;days&quot;) == 0] &lt;- &quot;New&quot;
+speeches$new_elect[difftime(election_2010, speeches$start_date, units = &quot;days&quot;) == 0] &lt;- &quot;New&quot;
+speeches$new_elect[is.na(speeches$new_elect)] &lt;- &quot;Returning&quot;</code></pre>
 </div>
 <div id="dictionary-based-content-analysis" class="section level2">
 <h2>Dictionary Based Content Analysis</h2>
@@ -92,12 +100,84 @@ speeches &lt;- merge(speeches, mps, by =  &quot;mnis_id&quot;)</code></pre>
 speeches$constituency &lt;- speeches$constituency %&gt;% tolower() %&gt;%
   removePunctuation()</code></pre>
 <p>Now we create a dictionary of the constituency terms to search for and use the str_detect function in the ‘stringr’ package to identify whether the transcript of the contribution contains either term</p>
-</div>
+<pre class="r"><code>con_dict &lt;- &quot;my constituen|own constituen&quot;
+
+#as.integer returns 0/1 in place of FALSE/TRUE
+speeches$con_ref1 &lt;- as.integer(str_detect(speeches$speech, con_dict))
+# Returns 26k / 290k positive
+
+speeches$con_ref2 &lt;- as.integer(str_detect(speeches$speech, speeches$constituency))
+# Returns 13k / 290k positive
+
+## Need to run twice with spaces as to not remove within words i.e. southhampton and remove words at the end of the string
+
+decompose  &lt;- &quot;north |east |west |south |city |mid |center |&quot;
+decompose2 &lt;- &quot; north| east| west| south| city| mid| center|&quot;
+
+speeches$alt_con &lt;- gsub(decompose, &quot;&quot;, speeches$constituency)
+speeches$alt_con &lt;- gsub(decompose2, &quot;&quot;, speeches$alt_con)
+
+speeches$con_ref3 &lt;- as.integer(str_detect(speeches$speech, speeches$alt_con))
+# Returns 19k /290k Positive
+
+
+#Construct into single meaesure
+
+speeches$con_ref &lt;- c()
+speeches$con_ref[speeches$con_ref1 + speeches$con_ref2 + speeches$con_ref3 &gt;= 1] &lt;- 1
+speeches$con_ref[speeches$con_ref1 + speeches$con_ref2 + speeches$con_ref3 == 0] &lt;- 0
+
+table(speeches$con_ref) ##39k/290k positive</code></pre>
+
 <div id="aggregate-data" class="section level2">
 <h2>Aggregate Data</h2>
 <p>Now that we have run our automated content analysis, we are interested in aggregating our data for each MP /Parliament (2005 &amp; 2010).</p>
+<pre class="r"><code>#To record a count of 1 for each contribution corresponding to an MP we create a variable x, which equals 1
+
+speeches$x &lt;- 1
+
+#To create a unique identifier for MP/year, we create an interval covering 2005-2010 and 2010-2015, and paste that into a new variable by our constituency
+
+speeches$date &lt;- as.Date(speeches$date)
+
+parliament_2005_2010 &lt;-interval(election_2005, election_2010)
+
+parliament_2010_2015 &lt;- interval(election_2010, election_2015)
+
+## First create variable to record which parliament the session date falls into
+
+speeches$parl &lt;- c()</code></pre>
+<pre class="r"><code>speeches$parl[speeches$date %within% parliament_2005_2010 == TRUE] &lt;- 2005
+speeches$parl[speeches$date %within% parliament_2010_2015 == TRUE] &lt;- 2010
+
+
+
+## Unique identifier == constituency  +  year
+
+speeches$con_elect &lt;- paste0(speeches$constituency, speeches$parl)</code></pre>
 <p>One issue with aggregating our data to reflect activity across the parliamentary tenure is the possibility of by-elections (elections when MPs resign or are removed from their post). This can be achieved by aggregating our data by the unique id we have generated and identifying cases with more than one MP display name within a single Parliament</p>
+<pre class="r"><code>## group_by and summarise from dplyr package
+
+speeches_agg &lt;- speeches %&gt;% group_by(con_elect) %&gt;% summarise(count = length(unique(display_as)))
+
+#26 cases of &gt;1 MP
+
+
+#Merge in count of MPs
+speeches &lt;- merge(speeches, speeches_agg, by = &quot;con_elect&quot;)
+
+#Remove &gt;1 cases
+speeches &lt;- filter(speeches, count == 1)</code></pre>
 <p>And aggregate again using the same method</p>
+<pre class="r"><code>df &lt;- speeches %&gt;% group_by(con_elect) %&gt;%
+  summarise(count = sum(x),
+            con_ref = sum(con_ref),
+            new_elect = new_elect
+            )
+
+##Remove any potential duplicates
+
+df &lt;- unique (df)</code></pre>
 </div>
 <div id="some-insights-and-visuals" class="section level2">
 <h2>Some insights and visuals</h2>

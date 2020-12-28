@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Posts | Daniel Braby</title>
-    <link>https://danielbraby.com/post/</link>
-      <atom:link href="https://danielbraby.com/post/index.xml" rel="self" type="application/rss+xml" />
-    <description>Posts</description>
-    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-gb</language><copyright>© Daniel Braby 2020</copyright>
+    <title>r | Daniel Braby</title>
+    <link>https://danielbraby.com/tag/r/</link>
+      <atom:link href="https://danielbraby.com/tag/r/index.xml" rel="self" type="application/rss+xml" />
+    <description>r</description>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-gb</language><copyright>© Daniel Braby 2020</copyright><lastBuildDate>Sun, 27 Dec 2020 00:00:00 +0000</lastBuildDate>
     <image>
       <url>https://danielbraby.com/images/icon_hud43cc38e8821a474da0bb232c3514873_35609_512x512_fill_lanczos_center_2.png</url>
-      <title>Posts</title>
-      <link>https://danielbraby.com/post/</link>
+      <title>r</title>
+      <link>https://danielbraby.com/tag/r/</link>
     </image>
     
     <item>
