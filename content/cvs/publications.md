@@ -33,8 +33,6 @@ header:
 
 **Braby, Daniel** & Shephard, Mark. "Bringing in the Constituents: The Role of Institutional Constraints and Incentive Structures in Driving Constituency Focus in Parliamentary Speech"
 
-**Braby, Daniel** & Metson, Lennard. "Examining Regional-Focus in UK Parliamentary Speech: Electoral Vulnerability and Sub-State Nationalism".
-
 **Braby, Daniel** & Ludwicki-Ziegler, Sebastian. "Representation, Personalisation and Politeness in Minister's Questions: A Comparison of Westminster & Holyrood"
 
 
